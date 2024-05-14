@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persona Hitung</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:nth-child(1) { background-color: #ff9999; }
+        button:nth-child(2) { background-color: #ffcc99; }
+        button:nth-child(3) { background-color: #ffff99; }
+        button:nth-child(4) { background-color: #ccff99; }
+        button:nth-child(5) { background-color: #99ff99; }
+        button:nth-child(6) { background-color: #99ccff; }
+        button:nth-child(7) { background-color: #9999ff; }
+        button:hover {
+            filter: brightness(85%);
+        }
+        #total-button {
+            background-color: #333;
+            color: white;
+            margin-top: 20px; /* Add margin to the top */
+        }
+        #total-button.hidden {
+            display: none;
+        }
+        #output {
+            margin: 20px 0;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BNI x Persona Teller Trainer</h1>
+    <div id="output"></div>
+    <button id="total-button" class="hidden" onclick="showTotal()">Selesai Menghitung</button>
+
+    <div class="button-container">
+        <button onclick="generateSheets(1000)">Rp 1.000</button>
+        <button onclick="generateSheets(2000)">Rp 2.000</button>
+        <button onclick="generateSheets(5000)">Rp 5.000</button>
+        <button onclick="generateSheets(10000)">Rp 10.000</button>
+        <button onclick="generateSheets(20000)">Rp 20.000</button>
+        <button onclick="generateSheets(50000)">Rp 50.000</button>
+        <button onclick="generateSheets(100000)">Rp 100.000</button>
+    </div>
+
+    <script>
+        let lastDenomination = 0;
+        let lastSheets = 0;
+
+        function generateSheets(denomination) {
+            const randomSheets = Math.floor(Math.random() * 100) + 1;
+            lastDenomination = denomination;
+            lastSheets = randomSheets;
+            document.getElementById('output').innerText = `Berapa nilai dari ${randomSheets} lembar uang Rp ${denomination}? `.toUpperCase();
+            document.getElementById('total-button').classList.remove('hidden');
+        }
+
+        function showTotal() {
+            const total = lastDenomination * lastSheets;
+            document.getElementById('output').innerText = `Nilai totalnya adalah Rp ${total} `.toUpperCase();
+        }
+    </script>
+
+</body>
+</html>
