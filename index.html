@@ -83,13 +83,21 @@
             const randomSheets = Math.floor(Math.random() * 100) + 1;
             lastDenomination = denomination;
             lastSheets = randomSheets;
-            document.getElementById('output').innerText = `Berapa nilai dari ${randomSheets} lembar uang Rp ${denomination}? `.toUpperCase();
+            const formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            });
+            document.getElementById('output').innerText = `Berapa nilai dari ${randomSheets} lembar uang ${formatter.format(denomination)}? `.toUpperCase();
             document.getElementById('total-button').classList.remove('hidden');
         }
 
         function showTotal() {
             const total = lastDenomination * lastSheets;
-            document.getElementById('output').innerText = `Nilai totalnya adalah Rp ${total} `.toUpperCase();
+            const formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            });
+            document.getElementById('output').innerText = `Nilai totalnya adalah ${formatter.format(total)} `.toUpperCase();
         }
     </script>
 
