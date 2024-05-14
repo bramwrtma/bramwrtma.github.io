@@ -17,6 +17,7 @@
         }
         h1 {
             color: #333;
+            text-align: center; /* Center the text */
         }
         .button-container {
             display: flex;
@@ -56,6 +57,7 @@
             color: #333;
             font-weight: bold;
             text-transform: uppercase;
+            text-align: center; /* Center the output text */
         }
     </style>
 </head>
@@ -98,6 +100,7 @@
                 currency: 'IDR'
             });
             document.getElementById('output').innerText = `Nilai totalnya adalah ${formatter.format(total)} `.toUpperCase();
+            document.getElementById('total-button').classList.add('hidden');
         }
     </script>
 
